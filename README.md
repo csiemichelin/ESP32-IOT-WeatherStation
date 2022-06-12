@@ -225,7 +225,7 @@ var socket = io.connect();
         });
 ```
 3. **編寫App.js**程式，先把esp32_req變數內容修改為ESP32開發板提供的IP位址。**Socket.io會連續呼叫ESP32網路伺服器來取得感測器資料：
-```htmlmixed=
+```javascript=
 var http = require('http');
 var path = require('path');
 var fs = require('fs');
@@ -236,7 +236,7 @@ var port = process.env.PORT || 8016; //8345;
 var esp32_req = "http://192.168.43.98/temp";
 ```
 4. 使用http.createServer()函數來啟動網路伺服器並處理HTPP請求，在此會動有所有JavaScript與CSS檔案的路徑：
-```htmlmixed=
+```javascript=
 //啟動網路伺服器並處理HTPP請求
 var srv = http.createServer(function (req, res) {
 
@@ -256,7 +256,7 @@ var srv = http.createServer(function (req, res) {
     }
 ```
 5. 檢查被請求的檔案。如果被請求的檔案可用的話，就讀取並將其發送給client web端，否則就在HTTP標頭加入錯誤訊息：
-```htmlmixed=
+```javascript=
     fs.exists(filePath, function(exists) {
 
         if (exists) {
@@ -280,13 +280,13 @@ var srv = http.createServer(function (req, res) {
 });
 ```
 6. 伺服器會透過listen()函數來監聽指定的port：
-```htmlmixed=
+```javascript=
 gw_srv = require('socket.io')(srv);
 srv.listen(port);
 console.log('Server running at http://127.0.0.1:' + port +'/');
 ```
 7. 使用Socket.io來監聽'connection'事件。接著讀取client web端的請求：
-```htmlmixed=
+```javascript=
 gw_srv.sockets.on('connection', function(socket) {
     var dataPusher = setInterval(function () {
         //socket.volatile.emit('data', Math.random() * 100);
@@ -294,7 +294,7 @@ gw_srv.sockets.on('connection', function(socket) {
         let data = '';
 ```
 8. 監聽'data'事件來讀取傳入的資料，以及'end'代表client web端以讀取完畢：
-```htmlmixed=
+```javascript=
         // 已經收到一段資料
         resp.on('data', (chunk) => {
             data += chunk;
