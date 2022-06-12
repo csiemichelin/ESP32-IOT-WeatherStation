@@ -224,7 +224,7 @@ var socket = io.connect();
             $.plot($("#placeholder"), [items]);
         });
 ```
-3. **編寫App.js**程式，先把esp32_req變數內容修改為ESP32開發板提供的IP位址。**Socket.io會連續呼叫ESP32網路伺服器來取得感測器資料：
+3. **編寫App.js程式**，先把esp32_req變數內容修改為ESP32開發板提供的IP位址。**Socket.io會連續呼叫ESP32網路伺服器來取得感測器資料：
 ```javascript=
 var http = require('http');
 var path = require('path');
