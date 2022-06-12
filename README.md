@@ -16,7 +16,7 @@ https://blog.csdn.net/weixin_45652444/article/details/118728136
 * Download Node.js:
 https://www.youtube.com/watch?v=OMhMnj7SBRQ
 * 利用Float charts函數庫來視覺化感測器資料：
-https://www/flowcharts.org/
+https://www/flotcharts.org/
 * F1(Views-problems) -> build -> port(/dev/ttyUSB0) -> device target選esp32 -> fash(URAT)-> F1的flash(dfu) your project -> monitor監看
 ## 硬體接線
 DHT22模組要接到ESP32開發板的IO26腳位
