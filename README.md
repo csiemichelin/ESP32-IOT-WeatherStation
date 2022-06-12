@@ -109,7 +109,7 @@ static esp_err_t event_handler(void *ctx, system_event_t *event)
         }
         break;
 ```
-> 3. 當收到SYSTEM_EVENT_STA_DISCONNECTED事件時，呼叫stop_webserver()函數來停止網路伺服器，呼叫esp_wifi_connect()函數來重新連接Wifi:
+> 3. 當收到SYSTEM_EVENT_STA_DISCONNECTED事件時，呼叫stop_webserver()函數來停止網路伺服器，呼叫esp_wifi_connect()函數來重新連接Wifi：
 ```c=
     case SYSTEM_EVENT_STA_DISCONNECTED:
         ESP_LOGI(TAG, "SYSTEM_EVENT_STA_DISCONNECTED");
@@ -192,7 +192,7 @@ esp_err_t temperature_get_handler(httpd_req_t *req)
     return ESP_OK;
 }
 ```
-5. 使用esp_wifi_set_mode函數將ESP32的Wifi模式設定成WIFI_MODE_STA，所有Wifi設定都會傳入到esp_wifi_set_config函數來執行ESP32的Wifi服務。呼叫esp_wifi_start()來啟動Wifi服務:
+5. 使用esp_wifi_set_mode函數將ESP32的Wifi模式設定成WIFI_MODE_STA，所有Wifi設定都會傳入到esp_wifi_set_config函數來執行ESP32的Wifi服務。呼叫esp_wifi_start()來啟動Wifi服務：
 ```c=
     ESP_LOGI(TAG, "Setting WiFi configuration SSID %s...", wifi_config.sta.ssid);
     ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
@@ -206,7 +206,7 @@ esp_err_t temperature_get_handler(httpd_req_t *req)
 * package.json＆package-lock.json：Node.js專案的設定檔
 * weather.html：用於呈現感測器資料的HTML網頁
 * flot資料夾：用來視覺化感測器資料
-1. 開啟terminal輸入以下指令，在此專案中安裝Socket.io:
+1. 開啟terminal輸入以下指令，在此專案中安裝Socket.io：
 ```c=
 $ npm install
 ```
@@ -279,7 +279,7 @@ var srv = http.createServer(function (req, res) {
 
 });
 ```
-6. 伺服器會透過listen()函數來監聽指定的port:
+6. 伺服器會透過listen()函數來監聽指定的port：
 ```htmlmixed=
 gw_srv = require('socket.io')(srv);
 srv.listen(port);
@@ -313,10 +313,10 @@ gw_srv.sockets.on('connection', function(socket) {
     }, 2000);
 ```
 ## Demo 
-1. 使用瀏覽器開啟http://<ESP32的IP位址>/temp:
+1. 使用瀏覽器開啟http://<ESP32的IP位址>/temp：
 2. 使用以下node指令來執行App.js程式：
 ```c=
 $ node App.js
 ```
 3. 開啟瀏覽器，並輸入Node.js程式的IP位址，在web尚可看到溫度資料的視覺化呈現（x軸代表資料count數，y軸代表溫度值）：
-4. terminal可觀查到Node.js的程式輸出:
+4. terminal可觀查到Node.js的程式輸出：
